@@ -8,7 +8,7 @@ class Client(AbstractUser):
     phone = models.CharField(max_length=20)
     email = models.EmailField(max_length=255, unique=True)
 
-    USERNAME_FIELD = email
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def __str__(self):
@@ -17,4 +17,3 @@ class Client(AbstractUser):
     class Meta:
         verbose_name = 'Cliente'
         verbose_name_plural = 'Clientes'
- 

@@ -6,9 +6,10 @@ from django.contrib.auth import password_validation
 class ClientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Client
-        fields = ['id', 'first_name', 'last_name',
-                  'phone', 'email', 'date_joined']
-        read_only_fields = ['id']
+        fields = ['id', 'first_name', 'last_name', 'username',
+                  'phone', 'email', 'date_joined', 'is_active']
+
+        read_only_fields = ['id', 'date_joined']
 
 
 class RegisterClientSerializer(serializers.ModelSerializer):
@@ -31,3 +32,11 @@ class RegisterClientSerializer(serializers.ModelSerializer):
             username=validated_data['username']
         )
         return client
+
+
+class ClientConfigSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Client
+        fields = ['id', 'first_name', 'last_name',
+                  'phone', 'email', 'date_joined']
+        read_only_fields = ['id', 'date_joined']

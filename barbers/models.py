@@ -17,6 +17,7 @@ class Barber(AbstractUser):
         choices=CHOICES_TYPE_ESPECIALIDADE, max_length=50, null=False, blank=False)
     phone = models.CharField(max_length=20)
     email = models.EmailField(max_length=255, unique=True)
+    user_type = models.CharField(max_length=20, default='barber')
 
     def __str__(self):
         return self.first_name

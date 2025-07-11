@@ -7,7 +7,7 @@ class BarberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Barber
         fields = ['id', 'first_name', 'last_name', 'phone',
-                  'especialidade', 'email', 'username', 'is_active', 'date_joined']
+                  'especialidade', 'date_joined']
         read_only_fields = ['id', 'date_joined']
 
 
@@ -18,9 +18,10 @@ class RegisterBarberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Barber
         fields = ['first_name', 'last_name', 'phone',
-                  'especialidade', 'email', 'username', 'password']
+                  'especialidade', 'email', 'password']
 
     def create(self, validated_data):
+        validated_data['username'] = validated_data['email'],
 
         barber = Barber.objects.create_user(
             first_name=validated_data['first_name'],
@@ -28,7 +29,6 @@ class RegisterBarberSerializer(serializers.ModelSerializer):
             phone=validated_data['phone'],
             especialide=validated_data['especialidade'],
             email=validated_data['email'],
-            username=validated_data['username'],
             password=validated_data['password']
         )
         barber.user_type = 'barber'
@@ -43,5 +43,5 @@ class BarberConfigSerializer(serializers.ModelSerializer):
     class Meta:
         model = Barber
         fields = ['id', 'first_name', 'last_name', 'phone',
-                  'especialidade', 'email', 'username', 'date_joined']
+                  'especialidade', 'email', 'date_joined']
         read_only_fields = ['id', 'date_joined']

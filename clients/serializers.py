@@ -31,6 +31,10 @@ class RegisterClientSerializer(serializers.ModelSerializer):
             password=validated_data['password'],
             username=validated_data['username']
         )
+        client.user_type = 'client'
+        client.is_superuser = False
+        client.is_staff = False
+        client.save()
         return client
 
 

@@ -9,7 +9,7 @@ router.register(r'client-config', ClientConfigView, basename='client-config')
 
 urlpatterns = [
     path('clients/register/',
-         RegisterClientView.as_view({'post': 'create'}), name='register_user'),
+         RegisterClientView.as_view({'post': 'create'}), name='register_client'),
     path('', include(router.urls)),
 
 ]

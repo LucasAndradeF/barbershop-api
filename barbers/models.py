@@ -1,8 +1,11 @@
 from django.db import models
-from core.models import User
+from accounts.models import User
 
 
-class Barber(User):
+class Barber(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='barber_profile')
+
     CHOICES_TYPE_ESPECIALIDADE = (
         ('corte', 'Corte'),
         ('barba', 'Barba'),
@@ -13,7 +16,6 @@ class Barber(User):
 
     especialidade = models.CharField(
         choices=CHOICES_TYPE_ESPECIALIDADE, max_length=50, null=False, blank=False)
-    user_type = models.CharField(max_length=20, default='barber')
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'

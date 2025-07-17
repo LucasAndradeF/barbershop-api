@@ -9,7 +9,7 @@ class BarberView(viewsets.ModelViewSet):
     queryset = Barber.objects.all()
     serializer_class = BarberSerializer
     http_method_names = ['get']
-    permission_classes = [IsClient]
+    permission_classes = [AllowAny]
 
 
 class RegisterBarberView(viewsets.ModelViewSet):
@@ -24,7 +24,7 @@ class BarberConfigView(viewsets.ModelViewSet):
     serializer_class = BarberConfigSerializer
 
     def get_queryset(self):
-        return Barber.objects.filter(id=self.request.user.id)
+        return Barber.objects.filter(user=self.request.user)
 
     def get_object(self):
-        return self.request.user
+        return Barber.objects.get(user=self.request.user)

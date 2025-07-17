@@ -21,7 +21,7 @@ class User(AbstractUser):
     objects = UserManager()
 
     groups = models.ManyToManyField(Group)
-    
+
     user_permissions = models.ManyToManyField(Permission)
 
     def __str__(self):

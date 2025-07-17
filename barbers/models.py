@@ -18,7 +18,7 @@ class Barber(models.Model):
         choices=CHOICES_TYPE_ESPECIALIDADE, max_length=50, null=False, blank=False)
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+        return f'{self.user.first_name} {self.user.last_name}'
 
     class Meta:
         verbose_name = 'Barbeiro'

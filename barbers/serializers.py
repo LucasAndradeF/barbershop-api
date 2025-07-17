@@ -29,7 +29,11 @@ class BarberSerializer(BarberBaseSerializer):
 
 
 class RegisterBarberSerializer(BarberBaseSerializer):
-    password = serializers.CharField(write_only=True)
+    first_name = serializers.CharField(write_only=True, required=True)
+    last_name = serializers.CharField(write_only=True, required=True)
+    email = serializers.EmailField(write_only=True, required=True)
+    phone = serializers.CharField(write_only=True, required=True)
+    password = serializers.CharField(write_only=True, required=True)
 
     class Meta:
         model = Barber

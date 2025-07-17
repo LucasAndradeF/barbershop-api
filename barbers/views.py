@@ -9,7 +9,7 @@ class BarberView(viewsets.ModelViewSet):
     queryset = Barber.objects.all()
     serializer_class = BarberSerializer
     http_method_names = ['get']
-    permission_classes = [AllowAny]
+    permission_classes = [IsClient]
 
 
 class RegisterBarberView(viewsets.ModelViewSet):

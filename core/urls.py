@@ -19,6 +19,9 @@ urlpatterns = [
 
     # Todas as rotas do app barbers
     path('api/', include('barbers.urls')),
+    
+    # Todas as rotas do app barbers
+    path('api/', include('services.urls')),
 
     # Rotas de login e refresh token da aplicação
     path('api/auth/login/', TokenObtainPairView.as_view(), name='login'),

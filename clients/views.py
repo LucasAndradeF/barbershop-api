@@ -3,8 +3,13 @@ from .models import Client
 from .serializers import ClientSerializer, RegisterClientSerializer, ClientConfigSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from core.permissions import IsClient, IsBarber
+from drf_spectacular.utils import extend_schema
 
 
+@extend_schema(
+    tags=["Barbeiro"],
+    summary="Rota para a visualização de clientes cadastrados no sistema"
+)
 class ClientView(viewsets.ModelViewSet):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
@@ -12,6 +17,10 @@ class ClientView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, IsBarber]
 
 
+@extend_schema(
+    tags=["Cadastro de Usuário"],
+    summary="Rota para o cadastro de clientes",
+)
 class RegisterClientView(viewsets.ModelViewSet):
     queryset = Client.objects.all()
     serializer_class = RegisterClientSerializer
@@ -19,6 +28,10 @@ class RegisterClientView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
 
 
+@extend_schema(
+    tags=["Cliente"],
+    summary="Rota para atualização e exibição de perfil do cliente cadastrado"
+)
 class ClientConfigView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, IsClient]
     serializer_class = ClientConfigSerializer

@@ -19,9 +19,16 @@ urlpatterns = [
 
     # Todas as rotas do app barbers
     path('api/', include('barbers.urls')),
-    
-    # Todas as rotas do app barbers
+
+    # Todas as rotas do app services
     path('api/', include('services.urls')),
+
+    # Todas as rotas do app appointments
+    path('api/', include('appointments.urls')),
+
+    # Todas as rotas do app payments
+    path('api/', include('payments.urls')),
+
 
     # Rotas de login e refresh token da aplicação
     path('api/auth/login/', TokenObtainPairView.as_view(), name='login'),

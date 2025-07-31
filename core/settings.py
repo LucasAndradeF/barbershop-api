@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,6 +46,8 @@ INSTALLED_APPS = [
     'barbers',
     'accounts',
     'services',
+    'appointments',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -144,5 +147,12 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'BARBERSHOP_API',
     'DESCRIPTION': 'Documentação da API do meu sistema.',
     'VERSION': '1.0.0',
-    'SERVE_INCLUDE_SCHEMA': False,  
+    'SERVE_INCLUDE_SCHEMA': False,
 }
+
+# Configuração para realizar testes e aumentar o tempo do token para não precisar realizar o refresh toda hora.
+# SIMPLE_JWT = {
+#     "ACCESS_TOKEN_LIFETIME": timedelta(hours=2400),
+#     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+#     "ROTATE_REFRESH_TOKENS": True,
+# }
